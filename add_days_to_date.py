@@ -2,8 +2,6 @@
 from datetime import datetime
 from typing import Dict
 
-days_in_months: Dict = {1: 31, 2: 28, 3: 31, 4: 30, 5: 31, 6: 30, 7: 31, 8: 31, 9: 30, 10: 31, 11: 30, 12: 31}
-
 
 def _is_leap_year(year: int) -> bool:
     """
@@ -29,7 +27,9 @@ def add_days_to_date(date: str, days_to_add: int) -> str:
     current_date = datetime.strptime(date, '%d.%m.%Y')
     current_year, current_month, current_day = current_date.year, current_date.month, current_date.day
 
-    if _is_leap_year(current_date.year):
+    days_in_months: Dict = {1: 31, 2: 28, 3: 31, 4: 30, 5: 31, 6: 30, 7: 31, 8: 31, 9: 30, 10: 31, 11: 30, 12: 31}
+
+    if _is_leap_year(current_year):
         days_in_months[2] = 29
 
     while True:
